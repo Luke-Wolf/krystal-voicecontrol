@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Krystal.Core
 {
@@ -18,11 +19,11 @@ namespace Krystal.Core
 
         public void Execute()
         {
-
+            Process.Start();
         }
         public void Execute(String command)
         {
-
+            Execute();
         }
         #endregion
         #region Properties
