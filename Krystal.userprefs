@@ -1,30 +1,14 @@
 ﻿<Properties GitUserInfo="UsingMD">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Krystal.Core/PlayPowerpointCommand.cs">
     <Files>
       <File FileName="Krystal.Core/Properties/AssemblyInfo.cs" Line="1" Column="1" />
-      <File FileName="Krystal.Core/ICommand.cs" Line="1" Column="1" />
-      <File FileName="Krystal.Core/PlayMusicCommand.cs" Line="7" Column="29" />
-      <File FileName="Krystal.Core/PlayPowerpointCommand.cs" Line="16" Column="19" />
-      <File FileName="Krystal.Core/PlayVideoCommand.cs" Line="15" Column="19" />
+      <File FileName="Krystal.Core/ICommand.cs" Line="8" Column="39" />
+      <File FileName="Krystal.Core/PlayMusicCommand.cs" Line="37" Column="14" />
+      <File FileName="Krystal.Core/PlayPowerpointCommand.cs" Line="21" Column="10" />
+      <File FileName="Krystal.Core/PlayVideoCommand.cs" Line="25" Column="10" />
       <File FileName="Krystal.Core/Controller.cs" Line="8" Column="28" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
-          <Node name="Krystal.Core" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Properties" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State expanded="True" selected="True" />
-      </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
