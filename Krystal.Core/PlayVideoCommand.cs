@@ -10,6 +10,19 @@ namespace Krystal.Core
         }
         #endregion
         #region Methods
+        public bool CanExecute(String command)
+        {
+            return true;
+        }
+
+        public void Execute()
+        {
+
+        }
+        public void Execute(String command)
+        {
+
+        }
         #endregion
         #region Properties
         #endregion
