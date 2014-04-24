@@ -14,6 +14,9 @@
 //    limitations under the License.
 
 using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Krystal.Core
 {
@@ -32,7 +35,15 @@ namespace Krystal.Core
 
         public void Execute()
         {
+            List<String> files = new List<String>(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
 
+            int rand = System.Random % files.Count;
+
+
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                Process.Start(files[rand]);
+            else if (Environment.OSVersion.Platform == PlatformID.Unix)
+                Process.Start("xdg-open", files[rand]);
 
         }
         public void Execute(String command)

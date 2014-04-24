@@ -21,6 +21,9 @@ namespace Krystal.Core
 {
     public class PlayPowerpointCommand: ICommand
     {
+        #region local variables
+        private readonly String location = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +@"/Krystal Powerpoint.pptx";
+        #endregion
         #region Constructors
         public PlayPowerpointCommand()
         {
@@ -34,7 +37,10 @@ namespace Krystal.Core
 
         public void Execute()
         {
-            Process.Start();
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                Process.Start(location);
+            else if (Environment.OSVersion.Platform == PlatformID.Unix)
+                Process.Start("xdg-open", location);
         }
         public void Execute(String command)
         {
