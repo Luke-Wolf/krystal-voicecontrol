@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Media;
+using System.Linq;
 
 
 
@@ -39,7 +40,7 @@ namespace Krystal.Core
 
         public void Execute()
         {
-
+            Execute("");
         }
         /// <summary>
         /// Execute the specified command.
@@ -47,15 +48,21 @@ namespace Krystal.Core
         /// <param name="command">Music File must be in .wav Format</param>
         public void Execute(String command)
         {
-            List<String> files = new List<String>(Directory.GetFiles("Music/"));
+            var files = new List<String>(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
             if (command == "")
             {
                 int rand = System.Random % files.Count;
-                SoundPlayer player = new SoundPlayer(files[rand]);
+                var player = new SoundPlayer(files[rand]);
                 player.Play();
             }
             else
             {
+                var items = from item in files where item.Contains(command) select item;
+                foreach(string item in items)
+                {
+                    var player = new SoundPlayer(item);
+                    player.Play();
+                }
 
             }
         }
