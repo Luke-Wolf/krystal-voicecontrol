@@ -1,8 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krystal.Core", "Krystal.Core\Krystal.Core.csproj", "{F75AE74A-A837-4A82-BFCC-6F900A824168}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F53DCED8-8E14-47AC-8000-3D3A68CFFF7B}"
@@ -11,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krystal.Voice", "Krystal.Voice\Krystal.Voice.csproj", "{5871C1D8-6081-4040-9B93-E1DC5A8612A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krystal.Tests", "Krystal.Tests\Krystal.Tests.csproj", "{5E19F474-3E8A-4128-BE17-39ED0FE1EC85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,17 +17,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E19F474-3E8A-4128-BE17-39ED0FE1EC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E19F474-3E8A-4128-BE17-39ED0FE1EC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E19F474-3E8A-4128-BE17-39ED0FE1EC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E19F474-3E8A-4128-BE17-39ED0FE1EC85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F75AE74A-A837-4A82-BFCC-6F900A824168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F75AE74A-A837-4A82-BFCC-6F900A824168}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F75AE74A-A837-4A82-BFCC-6F900A824168}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F75AE74A-A837-4A82-BFCC-6F900A824168}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5871C1D8-6081-4040-9B93-E1DC5A8612A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5871C1D8-6081-4040-9B93-E1DC5A8612A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5871C1D8-6081-4040-9B93-E1DC5A8612A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5871C1D8-6081-4040-9B93-E1DC5A8612A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Krystal.Core\Krystal.Core.csproj
@@ -41,5 +38,8 @@ Global
 		$2.MessageStyle = $3
 		$3.LineAlign = 0
 		$2.inheritsSet = Mono
+		$0.StandardHeader = $4
+		$4.Text = @\n Copyright ${Year}  ${CopyrightHolder}\n\n   Licensed under the Apache License, Version 2.0 (the "License");\n   you may not use this file except in compliance with the License.\n   You may obtain a copy of the License at\n\n       http://www.apache.org/licenses/LICENSE-2.0\n\n   Unless required by applicable law or agreed to in writing, software\n   distributed under the License is distributed on an "AS IS" BASIS,\n   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n   See the License for the specific language governing permissions and\n   limitations under the License.
+		$4.IncludeInNewFiles = True
 	EndGlobalSection
 EndGlobal

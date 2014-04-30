@@ -1,4 +1,4 @@
-//
+﻿//
 //  Copyright 2014  Luke
 //
 //    Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,14 +13,18 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 
+using NUnit.Framework;
 using System;
 
-namespace Krystal.Core
+namespace Krystal.Tests
 {
-    public interface ICommand
+    [TestFixture()]
+    public class CommandTest
     {
-        void Execute(String command);
-        bool CanExecute(String command);
+        [Test()]
+        public void TestCase()
+        {
+        }
     }
 }
 
