@@ -34,6 +34,7 @@ namespace Krystal.Core
         #region Constructors
         public PlayMusicCommand()
         {
+            Commands.AddRange(new [] {"music","sound"});
         }
         public bool CanExecute (String command)
         {
@@ -74,7 +75,7 @@ namespace Krystal.Core
         #region Methods
         #endregion
         #region Properties
-        public List<String> CommandPrefaces
+        public List<String> Commands
         {
             get;
             set;

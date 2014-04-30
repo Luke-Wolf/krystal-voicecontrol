@@ -28,6 +28,7 @@ namespace Krystal.Core
         #region Constructors
         public PlayVideoCommand()
         {
+            Commands.AddRange( new [] {"video","movie","action clip"});
         }
         #endregion
         #region Methods
@@ -54,6 +55,11 @@ namespace Krystal.Core
         }
         #endregion
         #region Properties
+        public List<String> Commands
+        {
+            get;
+            set;
+        }
         #endregion
     }
 }

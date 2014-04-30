@@ -14,6 +14,7 @@
 //    limitations under the License.
 
 using System;
+using System.Collections.Generic;
 
 namespace Krystal.Core
 {
@@ -21,6 +22,7 @@ namespace Krystal.Core
     {
         void Execute(String command);
         bool CanExecute(String command);
+        List<String> Commands{ get; set;}
     }
 }
 

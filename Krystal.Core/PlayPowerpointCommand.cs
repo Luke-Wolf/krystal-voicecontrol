@@ -27,6 +27,7 @@ namespace Krystal.Core
         #region Constructors
         public PlayPowerpointCommand()
         {
+            Commands.AddRange(new [] {"powerpoint","presentation"});
         }
         #endregion
         #region Methods
@@ -48,6 +49,11 @@ namespace Krystal.Core
         }
         #endregion
         #region Properties
+        public List<String> Commands
+        { 
+            get;
+            set;
+        }
         #endregion
     }
 }
