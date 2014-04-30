@@ -26,7 +26,7 @@ namespace Krystal.Core
         #region Constructors
         public PlayVideoCommand()
         {
-            Commands.AddRange( new [] {"video","movie","action clip"});
+            Commands = new List<String>( new [] {"video","movie","action clip"});
         }
         public PlayVideoCommand(String path) : this()
         {
@@ -45,7 +45,7 @@ namespace Krystal.Core
             if (PlayPath == null)
             {
                 List<String> files = new List<String>(Directory.GetFiles(
-                    Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyVideos)));
                 ExecuteRandomFile(files);
             }
             else

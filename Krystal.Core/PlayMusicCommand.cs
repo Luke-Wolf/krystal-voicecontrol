@@ -34,7 +34,8 @@ namespace Krystal.Core
         /// </summary>
         public PlayMusicCommand()
         {
-            Commands.AddRange(new [] {"music","sound"});
+            Commands = new List<string>(new [] { "music", "sound" });
+            
         }
         public PlayMusicCommand(String path):this()
         {

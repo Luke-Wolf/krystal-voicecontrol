@@ -14,7 +14,7 @@ namespace Krystal.Core
         }
         public Controller(ICommand[] commands)
         {
-            Commands.AddRange(commands);
+            Commands = new List<ICommand>(commands);
         }
         #endregion
         #region Methods

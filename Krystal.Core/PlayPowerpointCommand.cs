@@ -27,7 +27,7 @@ namespace Krystal.Core
         #region Constructors
         public PlayPowerpointCommand()
         {
-            Commands.AddRange(new [] {"powerpoint","presentation"});
+            Commands= new List<String>(new [] {"powerpoint","presentation"});
         }
         public PlayPowerpointCommand(String path):this()
         {
@@ -47,9 +47,10 @@ namespace Krystal.Core
             {
                 var files = new List<String>(Directory.GetFiles(
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)));
-                files = new List<String>( from file in files
+                var temp = from file in files
                         where file.Contains(".pptx") || file.Contains(".ppt")
-                    select file);
+                    select file;
+                files = new List<String>(temp);
                 ExecuteRandomFile(files);
             }
             else
