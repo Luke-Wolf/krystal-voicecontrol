@@ -22,6 +22,9 @@ namespace Krystal.Core
 {
     public class PlayVideoCommand:ICommand
     {
+        #region variables
+        Random randGen = new Random();
+        #endregion
         #region Constructors
         public PlayVideoCommand()
         {
@@ -36,8 +39,7 @@ namespace Krystal.Core
         public void Execute()
         {
             List<String> files = new List<String>(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
-
-            int rand = System.Random % files.Count;
+            int rand = randGen(files.Count);
 
 
             if (Environment.OSVersion.Platform == PlatformID.Win32NT)
