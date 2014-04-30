@@ -11,9 +11,9 @@ namespace WindowsFormsApplication
 
     class MyPipeline : UtilMPipeline
     {
-        ProcessStartInfo startMusic = new ProcessStartInfo("Green Bird.mp3");
-        ProcessStartInfo startMovie = new ProcessStartInfo("Frozen.mp4");
-        ProcessStartInfo startPowerPoint = new ProcessStartInfo("Proposal.pptx");
+        ProcessStartInfo startMusic = new ProcessStartInfo("..\\..\\Media\\Green Bird.mp3");
+        ProcessStartInfo startMovie = new ProcessStartInfo("..\\..\\Media\\Frozen.mp4");
+        ProcessStartInfo startPowerPoint = new ProcessStartInfo("..\\..\\Media\\Proposal.pptx");
 
 
         public MyPipeline() : base()
@@ -23,12 +23,10 @@ namespace WindowsFormsApplication
 
         public override void OnRecognized(ref PXCMVoiceRecognition.Recognition data)
         {
-            Console.WriteLine("Recognized: " + data.dictation);
 
-            if (data.ToString() == "Play music") {
-
-                Process.Start(startMusic);
-            }
+            Process.Start(startMusic);
+            //Console.WriteLine("Recognized: " + data.dictation);
+            //if (data.ToString() == "Play music") {}
         }
 
         static void PlayMusic()

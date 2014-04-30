@@ -14,6 +14,8 @@ namespace WindowsFormsApplication
     {
 
         MyPipeline pp = new MyPipeline();
+
+
         public Kristal()
         {
             InitializeComponent();
