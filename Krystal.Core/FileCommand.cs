@@ -42,7 +42,7 @@ namespace Krystal.Core
         protected void ExecuteRandomFile(List<String> files)
         {
             if (files.Count == 0)
-                throw new InvalidDataException("No Powerpoint Files in this directory");
+                throw new InvalidDataException("No Valid Files in this directory");
             int rand = randGen.Next(files.Count);
             Execute(files[rand]);
         }
