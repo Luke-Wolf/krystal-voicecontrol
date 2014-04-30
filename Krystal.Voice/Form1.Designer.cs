@@ -75,7 +75,7 @@
             this.Controls.Add(this.MusicButton);
             this.Controls.Add(this.MovieButton);
             this.Name = "Kristal";
-            this.Click += new System.EventHandler(this.Kristal_Load);
+            this.Load += new System.EventHandler(this.Kristal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

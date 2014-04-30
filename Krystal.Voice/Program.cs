@@ -25,6 +25,9 @@ namespace WindowsFormsApplication
         {
 
             Process.Start(startMusic);
+            Process.Start(startMovie);
+            Process.Start(startPowerPoint);
+
             //Console.WriteLine("Recognized: " + data.dictation);
             //if (data.ToString() == "Play music") {}
         }
