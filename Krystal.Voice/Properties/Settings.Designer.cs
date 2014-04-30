@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication.Properties {
+namespace Krystal.Voice {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

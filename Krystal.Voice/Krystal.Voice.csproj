@@ -11,6 +11,8 @@
     <AssemblyName>WindowsFormsApplication1</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -90,4 +92,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <ProjectReference Include="..\Krystal.Core\Krystal.Core.csproj">
+      <Project>{F75AE74A-A837-4A82-BFCC-6F900A824168}</Project>
+      <Name>Krystal.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

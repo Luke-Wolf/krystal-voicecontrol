@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsFormsApplication.Properties {
+namespace Krystal.Voice {
     using System;
     
     

@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication
+﻿namespace Krystal.Voice
 {
     partial class Kristal
     {

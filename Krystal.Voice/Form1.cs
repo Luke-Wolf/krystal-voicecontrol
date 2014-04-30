@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplication
+namespace Krystal.Voice
 {
     public partial class Kristal : Form
     {
