@@ -23,31 +23,15 @@ namespace WindowsFormsApplication
 
         public override void OnRecognized(ref PXCMVoiceRecognition.Recognition data)
         {
-
-            Process.Start(startMusic);
-            Process.Start(startMovie);
-            Process.Start(startPowerPoint);
+            if (data.dictation.ToString().ToLower().Contains("music")) 
+                Process.Start(startMusic);
+            if (data.dictation.ToString().ToLower().Contains("movie")) 
+                Process.Start(startMovie);
+            if (data.dictation.ToString().ToLower().Contains("powerpoint"))
+                Process.Start(startPowerPoint);
 
             //Console.WriteLine("Recognized: " + data.dictation);
             //if (data.ToString() == "Play music") {}
-        }
-
-        static void PlayMusic()
-        {
-            
-
-        }
-
-        static void PlayMovie()
-        {
-
-
-        }
-
-        static void PlayPowerPoint()
-        {
-
-
         }
 
 
@@ -66,9 +50,6 @@ namespace WindowsFormsApplication
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Kristal());
 
-            //MyPipeline pp = new MyPipeline();
-            //pp.LoopFrames();
-            //pp.Dispose();
 
         }
 
