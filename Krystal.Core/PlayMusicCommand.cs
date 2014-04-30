@@ -24,61 +24,65 @@ using System.Linq;
 namespace Krystal.Core
 {
     /// <summary>
-    /// Play music command.
+    /// Plays Music on the command of "Music" or "Sound"
     /// </summary>
     public class PlayMusicCommand : ICommand
     {
         #region Variables
         Random randGen = new Random();
+        string playPath;
         #endregion
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayMusicCommand"/> class.
+        /// 
+        /// </summary>
         public PlayMusicCommand()
         {
             Commands.AddRange(new [] {"music","sound"});
         }
-        public bool CanExecute (String command)
+        public PlayMusicCommand(String path):this()
         {
-            //implement a check to see if a command will work
-            return true;
+            playPath = path;
+        }
+        public PlayMusicCommand(String path, String[] commands)
+        {
+            playPath = path; 
+            Commands.AddRange(commands);
         }
 
+
+        #endregion
+        #region Methods
+        #region Public
         public void Execute()
         {
-            Execute("");
-        }
-        /// <summary>
-        /// Execute the specified command.
-        /// </summary>
-        /// <param name="command">Music File must be in .wav Format</param>
-        public void Execute(String command)
-        {
-            var files = new List<String>(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
-            if (command == "")
+            if(playPath == null)
             {
-
+                var files = new List<String>(Directory.GetFiles(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
                 int rand = randGen.Next(files.Count);
-                var player = new SoundPlayer(files[rand]);
-                player.Play();
+                Execute(files[rand]);
             }
             else
             {
-                var items = from item in files where item.Contains(command) select item;
-                foreach(string item in items)
-                {
-                    var player = new SoundPlayer(item);
-                    player.Play();
-                }
-
+                Execute(playPath);
             }
         }
         #endregion
-        #region Methods
+        #region Private
+        static void Execute(String path)
+        {
+            var player = new SoundPlayer(path);
+            player.Play();
+        }
+        #endregion
         #endregion
         #region Properties
         public List<String> Commands
         {
             get;
-            set;
+            private set;
         }
         #endregion
     }

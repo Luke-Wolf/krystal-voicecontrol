@@ -22,43 +22,57 @@ namespace Krystal.Core
 {
     public class PlayVideoCommand:ICommand
     {
-        #region variables
+        #region Private Variables
         Random randGen = new Random();
+        string playPath;
         #endregion
         #region Constructors
         public PlayVideoCommand()
         {
             Commands.AddRange( new [] {"video","movie","action clip"});
         }
+        public PlayVideoCommand(String path) : this()
+        {
+            playPath = new string(path);
+        }
+        public PlayVideoCommand(String path, String[] commands)
+        {
+            playPath = path; 
+            Commands.AddRange(commands);
+        }
         #endregion
         #region Methods
-        public bool CanExecute(String command)
-        {
-            return true;
-        }
-
+        #region Public
         public void Execute()
         {
-            List<String> files = new List<String>(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
-            int rand = randGen(files.Count);
-
-
-            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
-                Process.Start(files[rand]);
-            else if (Environment.OSVersion.Platform == PlatformID.Unix)
-                Process.Start("xdg-open", files[rand]);
-
+            if (playPath == null)
+            {
+                List<String> files = new List<String>(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
+                int rand = randGen.Next(files.Count);
+                Execute(files[rand]);
+            }
+            else
+            {
+                Execute(playPath);
+            }
         }
-        public void Execute(String command)
+        #endregion
+        #region Private
+        static void Execute(String path)
         {
+            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
+                Process.Start(path);
+            else if (Environment.OSVersion.Platform == PlatformID.Unix)
+                Process.Start("xdg-open", path);
 
         }
+        #endregion
         #endregion
         #region Properties
         public List<String> Commands
         {
             get;
-            set;
+            private set;
         }
         #endregion
     }

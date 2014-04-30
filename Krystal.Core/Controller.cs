@@ -1,5 +1,4 @@
 using System;
-using System.Runtime.InteropServices;
 using System.Collections.Generic;
 
 namespace Krystal.Core
@@ -11,9 +10,11 @@ namespace Krystal.Core
         public Controller()
         {
             Commands.AddRange(new ICommand[] {new PlayMusicCommand(),
-                new PlayPowerpointCommand(),new PlayVideoCommand()});
-
-        
+                new PlayPowerpointCommand(),new PlayVideoCommand()});        
+        }
+        public Controller(ICommand[] commands)
+        {
+            Commands.AddRange(commands);
         }
         #endregion
         #region Methods
@@ -25,8 +26,7 @@ namespace Krystal.Core
                 {
                     if(commandString.Contains(command))
                     {
-
-                        item.Execute(command);
+                        item.Execute();
                         return;
                     }
                 }
