@@ -28,6 +28,9 @@ namespace Krystal.Core
     /// </summary>
     public class PlayMusicCommand : ICommand
     {
+        #region Variables
+        Random randGen = new Random();
+        #endregion
         #region Constructors
         public PlayMusicCommand()
         {
@@ -51,7 +54,8 @@ namespace Krystal.Core
             var files = new List<String>(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
             if (command == "")
             {
-                int rand = System.Random % files.Count;
+
+                int rand = randGen.Next(files.Count);
                 var player = new SoundPlayer(files[rand]);
                 player.Play();
             }
