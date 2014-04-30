@@ -43,7 +43,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Krystal.CLI\Krystal.CLI.csproj
+		StartupItem = Krystal.Voice\Krystal.Voice.csproj
 		Policies = $0
 		$0.VersionControlPolicy = $1
 		$1.inheritsSet = Mono
