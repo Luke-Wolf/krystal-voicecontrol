@@ -16,21 +16,16 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Media;
-using System.Linq;
-
-
 
 namespace Krystal.Core
 {
     /// <summary>
     /// Plays Music on the command of "Music" or "Sound"
     /// </summary>
-    public class PlayMusicCommand : ICommand
+    public class PlayMusicCommand : FileCommand,ICommand
     {
         #region Variables
-        Random randGen = new Random();
-        string playPath;
+
         #endregion
         #region Constructors
         /// <summary>
@@ -43,39 +38,32 @@ namespace Krystal.Core
         }
         public PlayMusicCommand(String path):this()
         {
-            playPath = path;
+            CheckFileExists(path);
         }
         public PlayMusicCommand(String path, String[] commands)
         {
-            playPath = path; 
+            CheckFileExists(path);
             Commands.AddRange(commands);
         }
-
-
         #endregion
         #region Methods
         #region Public
-        public void Execute()
+        public override void Execute()
         {
-            if(playPath == null)
+            if(PlayPath == null)
             {
                 var files = new List<String>(Directory.GetFiles(
                     Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
-                int rand = randGen.Next(files.Count);
-                Execute(files[rand]);
+                ExecuteRandomFile(files);
             }
             else
             {
-                Execute(playPath);
+                Execute(PlayPath);
             }
         }
         #endregion
         #region Private
-        static void Execute(String path)
-        {
-            var player = new SoundPlayer(path);
-            player.Play();
-        }
+
         #endregion
         #endregion
         #region Properties

@@ -16,15 +16,13 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Diagnostics;
+using System.Linq;
 
 namespace Krystal.Core
 {
-    public class PlayPowerpointCommand: ICommand
+    public class PlayPowerpointCommand: FileCommand,ICommand
     {
         #region local variables
-        Random randGen = Random();
-        String playPath;
         #endregion
         #region Constructors
         public PlayPowerpointCommand()
@@ -33,43 +31,35 @@ namespace Krystal.Core
         }
         public PlayPowerpointCommand(String path):this()
         {
-            playPath = path;
+            CheckFileExists(path);
         }
         public PlayPowerpointCommand(String path, String[] commands)
         {
-            playPath = path; 
+            CheckFileExists(path); 
             Commands.AddRange(commands);
         }
         #endregion
         #region Methods
         #region Public
-        public void Execute()
+        public override void Execute()
         {
-            if(playPath == null)
+            if(PlayPath == null)
             {
                 var files = new List<String>(Directory.GetFiles(
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)));
-                files = from file in files
+                files = new List<String>( from file in files
                         where file.Contains(".pptx") || file.Contains(".ppt")
-                                    select file;
-                int rand = randGen.Next(files.Count);
-                Execute(files[rand]);
+                    select file);
+                ExecuteRandomFile(files);
             }
             else
             {
-                Execute(playPath);
+                Execute(PlayPath);
             }
-
         }
         #endregion
         #region Private
-        static void Execute(String path)
-        {
-            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
-                Process.Start(path);
-            else if (Environment.OSVersion.Platform == PlatformID.Unix)
-                Process.Start("xdg-open", path);
-        }
+
         #endregion
         #endregion
         #region Properties

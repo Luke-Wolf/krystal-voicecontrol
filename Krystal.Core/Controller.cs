@@ -20,6 +20,7 @@ namespace Krystal.Core
         #region Methods
         public void Execute(String command)
         {
+            command = command.ToLower();
             foreach(ICommand item in Commands)
             {
                 foreach(string commandString in item.Commands)

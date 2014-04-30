@@ -16,15 +16,12 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace Krystal.Core
 {
-    public class PlayVideoCommand:ICommand
+    public class PlayVideoCommand:FileCommand,ICommand
     {
         #region Private Variables
-        Random randGen = new Random();
-        string playPath;
         #endregion
         #region Constructors
         public PlayVideoCommand()
@@ -33,39 +30,31 @@ namespace Krystal.Core
         }
         public PlayVideoCommand(String path) : this()
         {
-            playPath = new string(path);
+            CheckFileExists(path);
         }
         public PlayVideoCommand(String path, String[] commands)
         {
-            playPath = path; 
+            CheckFileExists(path);
             Commands.AddRange(commands);
         }
         #endregion
         #region Methods
         #region Public
-        public void Execute()
+        public override void Execute()
         {
-            if (playPath == null)
+            if (PlayPath == null)
             {
-                List<String> files = new List<String>(Directory.GetFiles(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
-                int rand = randGen.Next(files.Count);
-                Execute(files[rand]);
+                List<String> files = new List<String>(Directory.GetFiles(
+                    Environment.GetFolderPath(Environment.SpecialFolder.MyMusic)));
+                ExecuteRandomFile(files);
             }
             else
             {
-                Execute(playPath);
+                Execute(PlayPath);
             }
         }
         #endregion
-        #region Private
-        static void Execute(String path)
-        {
-            if (Environment.OSVersion.Platform == PlatformID.Win32NT)
-                Process.Start(path);
-            else if (Environment.OSVersion.Platform == PlatformID.Unix)
-                Process.Start("xdg-open", path);
-
-        }
+        #region Private       
         #endregion
         #endregion
         #region Properties

@@ -38,6 +38,7 @@
     <Compile Include="PlayVideoCommand.cs" />
     <Compile Include="Controller.cs" />
     <Compile Include="ICommand.cs" />
+    <Compile Include="FileCommand.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

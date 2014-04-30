@@ -21,7 +21,7 @@ namespace Krystal.Core
     public interface ICommand
     {
         void Execute();
-        List<String> Commands{ get; private set;}
+        List<String> Commands{ get;}
     }
 }
 
