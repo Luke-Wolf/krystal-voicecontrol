@@ -19,19 +19,37 @@ using System.Collections.Generic;
 
 namespace Krystal.Core
 {
+    /// <summary>
+    /// Plays a video on the command phrase of "video", "movie", and "action clip".
+    /// </summary>
     public class PlayVideoCommand:FileCommand,ICommand
     {
-        #region Private Variables
-        #endregion
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayVideoCommand"/> class.
+        /// picks a random powerpoint to play from the user's My Videos Directory, recognizes
+        /// "video", "movie", and "action clip"
+        /// </summary>
         public PlayVideoCommand()
         {
             Commands = new List<String>( new [] {"video","movie","action clip"});
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayVideoCommand"/> class.
+        /// plays the video passed in by the path.  Recognizes "video", "movie", and "action clip"
+        /// </summary>
+        /// <param name="path">Path.</param>
         public PlayVideoCommand(String path) : this()
         {
             CheckFileExists(path);
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayPowerpointCommand"/> class.
+        /// plays the video passed in by the path, and utilizes the commands passed in, it is
+        /// recommended you use an anonymous type.
+        /// </summary>
+        /// <param name="path">Path.</param>
+        /// <param name="commands">Commands.</param>
         public PlayVideoCommand(String path, String[] commands)
         {
             CheckFileExists(path);
@@ -39,7 +57,6 @@ namespace Krystal.Core
         }
         #endregion
         #region Methods
-        #region Public
         public override void Execute()
         {
             if (PlayPath == null)
@@ -53,9 +70,6 @@ namespace Krystal.Core
                 Execute(PlayPath);
             }
         }
-        #endregion
-        #region Private       
-        #endregion
         #endregion
         #region Properties
         public List<String> Commands

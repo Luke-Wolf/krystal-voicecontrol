@@ -24,31 +24,41 @@ namespace Krystal.Core
     /// </summary>
     public class PlayMusicCommand : FileCommand,ICommand
     {
-        #region Variables
-
-        #endregion
         #region Constructors
         /// <summary>
         /// Initializes a new instance of the <see cref="Krystal.Core.PlayMusicCommand"/> class.
-        /// 
+        /// listens for "music" and "sound"
         /// </summary>
         public PlayMusicCommand()
         {
             Commands = new List<string>(new [] { "music", "sound" });
             
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayMusicCommand"/> class.
+        /// Utilizes the passed in path as the item to play, listens for "music" and "sound"
+        /// </summary>
+        /// <param name="path">Item to play</param>
         public PlayMusicCommand(String path):this()
         {
             CheckFileExists(path);
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayMusicCommand"/> class.
+        /// Utilizes the passed in path as the path of the item to play, also takes in a list of
+        /// commands for the command to recognize
+        /// </summary>
+        /// <param name="path">Path.</param>
+        /// <param name="commands">Commands.</param>
         public PlayMusicCommand(String path, String[] commands)
         {
             CheckFileExists(path);
             Commands.AddRange(commands);
         }
         #endregion
+
         #region Methods
-        #region Public
         public override void Execute()
         {
             if(PlayPath == null)
@@ -63,10 +73,8 @@ namespace Krystal.Core
             }
         }
         #endregion
-        #region Private
 
-        #endregion
-        #endregion
+
         #region Properties
         public List<String> Commands
         {

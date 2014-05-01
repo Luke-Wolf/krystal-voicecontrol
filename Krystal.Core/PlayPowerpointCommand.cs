@@ -20,36 +20,57 @@ using System.Linq;
 
 namespace Krystal.Core
 {
+    /// <summary>
+    /// Plays a powerpoint on the commands of "powerpoint" and "presentation".
+    /// </summary>
     public class PlayPowerpointCommand: FileCommand,ICommand
     {
-        #region local variables
-        #endregion
         #region Constructors
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayPowerpointCommand"/> class.
+        /// picks a random powerpoint to play from the user's My Documents Directory, recognizes
+        /// "powerpoint" and "presentation"
+        /// </summary>
         public PlayPowerpointCommand()
         {
             Commands= new List<String>(new [] {"powerpoint","presentation"});
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayPowerpointCommand"/> class.
+        /// plays the powerpoint passed in by the path.  Recognizes "powerpoint" and "presentation"
+        /// </summary>
+        /// <param name="path">Path.</param>
         public PlayPowerpointCommand(String path):this()
         {
             CheckFileExists(path);
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Krystal.Core.PlayPowerpointCommand"/> class.
+        /// plays the powerpoint passed in by the path, and utilizes the commands passed in, it is
+        /// recommended you use an anonymous type.
+        /// </summary>
+        /// <param name="path">Path.</param>
+        /// <param name="commands">Commands.</param>
         public PlayPowerpointCommand(String path, String[] commands)
         {
             CheckFileExists(path); 
             Commands.AddRange(commands);
         }
         #endregion
+
         #region Methods
-        #region Public
         public override void Execute()
         {
             if(PlayPath == null)
             {
                 var files = new List<String>(Directory.GetFiles(
                     Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)));
+
+                //strain out the files that aren't powerpoints
                 var temp = from file in files
-                        where file.Contains(".pptx") || file.Contains(".ppt")
+                        where file.Contains(".pptx") || file.Contains(".ppt") || file.Contains(".odp")
                     select file;
+
                 files = new List<String>(temp);
                 ExecuteRandomFile(files);
             }
@@ -58,10 +79,6 @@ namespace Krystal.Core
                 Execute(PlayPath);
             }
         }
-        #endregion
-        #region Private
-
-        #endregion
         #endregion
         #region Properties
         public List<String> Commands
