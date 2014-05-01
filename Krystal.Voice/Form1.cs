@@ -39,6 +39,7 @@ namespace Krystal.Voice
 
         private void Kristal_Load(object sender, EventArgs e)
         {
+            //Kick the voice recognition pipline off into it's own thread so that it doesn't block the form.
             Thread thread = new Thread(voiceloop);
             thread.Start();
             
